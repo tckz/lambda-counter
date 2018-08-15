@@ -5,7 +5,8 @@ Lambda counter
 
 * Node.js 8.x
 * Yarn
-* Redis(Singel server)
+* GNU make
+* Redis(Single server)
 
 ## Prerequisites
 
@@ -16,6 +17,7 @@ Lambda counter
 
 # Run locally
 
+* Pass configuraion by env-var or .env
   ```bash
   $ env REDIS_URL=redis://127.0.0.1:6379 node index.js
   ```
@@ -25,11 +27,11 @@ Lambda counter
 1. Make dist package.
    ```bash
    $ yarn --prod
-   $ zip -r dist/lambda-counter.zip lambda-counter.js lib/* node_modules/
+   $ make
    ```
 
 2. Update lambda. (Lambda function must be exist)
    ```bash
-   $ aws lambda update-function-code --function-name somefunc --zip-file dist/lambda-counter.zip 
+   $ aws lambda update-function-code --function-name somefunc --zip-file fileb://dist/lambda-counter.zip 
    ```
   
